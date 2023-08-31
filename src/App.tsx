@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ProtectedRoute from './Components/ProtectedRoute';
+import { DatabaseProvider } from './Context/DatabaseContext';
+import { UserProvider } from './Context/UserContext';
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
+import Signin from './pages/Signin';
+import './styles/styles.css';
 
-function App() {
+// import { Container } from './styles';
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <UserProvider>
+          <DatabaseProvider>
+            <ProtectedRoute exact path="/" component={Home} />
+            <ProtectedRoute exact path="/Dashboard" component={Dashboard} />
+          </DatabaseProvider>
+          <Route exact path="/auth/Signin" component={Signin} />
+        </UserProvider>
+      </Switch>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

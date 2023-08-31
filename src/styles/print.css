@@ -1,0 +1,40 @@
+@media print {
+  @page {
+    size: landscape;
+    margin: 1rem;
+  }
+
+  table {
+    all: initial!important;
+  }
+
+  td {
+    page-break-inside: avoid!important;
+  }
+
+  .table-container {
+    align-self: center !important;
+    all: initial!important;
+    overflow: visible !important;
+    position: static !important;
+    width: auto !important;
+    height: max-content !important;
+  }
+
+
+  .table-to-print {
+    display: block;
+    
+  }
+
+  .table-to-print td {
+    border-right: 1px solid rgb(var(--primary));
+    border-bottom: 1px solid rgb(var(--primary));
+    padding: .3rem;
+    font-size: 14px;
+  }
+
+  .ant-table-wrapper {
+    display: none;
+  }
+}
