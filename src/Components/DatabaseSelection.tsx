@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { IDatabase, useDatabases } from '../Context/DatabaseContext';
 import { IUser, useUser } from '../Context/UserContext';
@@ -42,7 +43,7 @@ const DatabaseSelection: React.FC<Props> = ({
       {userConnections && <div className="database-selection">
         <div>
           <h3>{user.username}</h3>
-          <span>{user.email}</span>
+          <p>{user.email}</p>
         </div>
         <div>
           <h2>Bancos de Dados:</h2>
@@ -50,11 +51,12 @@ const DatabaseSelection: React.FC<Props> = ({
             {
               userConnections?.databases.map((d) => (
                 <li key={d.id}>
-                  <button
+                  <Button
+                    type="primary"
                     onClick={() => handleSelectConnection(d)}
                   >
                     {d.name}
-                  </button>
+                  </Button>
                 </li>
               ))
             }

@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
@@ -39,12 +40,12 @@ const LoginForm: React.FC = () => {
           placeholder='Senha'
         />
 
-        <button
-          type="button"
+        <Button
+          type="primary"
           onClick={handleSubmit}
         >
           Entrar
-        </button>
+        </Button>
 
         {err && <p className="error-message">{err}</p>}
       </form>

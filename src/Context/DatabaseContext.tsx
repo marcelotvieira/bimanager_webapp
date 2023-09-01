@@ -53,7 +53,6 @@ export const DatabaseProvider: React.FC<{ children: ReactNode }> = ({
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-
   const [initialDate, setInitialDate] = useState<Date>(() => {
     const now = new Date();
     now.setDate(1);

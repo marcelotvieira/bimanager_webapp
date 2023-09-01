@@ -10,6 +10,7 @@ $copy: #484664;
   width: 100%;
   background-color: rgb(var(--callout-rgb));
   min-height: 42em !important;
+  z-index: 0;
   height: 100%;
 
   .animation-box {
@@ -137,6 +138,7 @@ $copy: #484664;
 
 aside {
   flex-basis: 18%;
+  z-index: 99 !important;
   background: rgb(var(--callout2-rgb));
   border-radius: .2rem;
 }
@@ -259,7 +261,7 @@ aside {
     margin: .5rem 0;
   }
 
-  span {
+  p {
     font-size: 14px;
     color: rgb(var(--primary));
   }
@@ -371,14 +373,25 @@ aside {
   .ant-pagination {
     padding: 0 1rem;
 
+    a,
+    button {
+      color: rgb(var(--foreground-rgb)) !important;
+    }
+
     .ant-pagination-item-active {
       background-color: rgb(var(--primary));
+
+      a,
+      button {
+        color: white !important;
+      }
+
     }
 
     a,
     button,
     span {
-      color: rgb(var(--foreground-rgb)) !important;
+      color: rgb(var(white)) !important;
     }
   }
 

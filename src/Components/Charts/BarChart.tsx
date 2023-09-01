@@ -1,7 +1,6 @@
 import { Bar } from '@ant-design/charts';
 import React from 'react';
 import { IGenericQueryRowData, useDatabases } from '../../Context/DatabaseContext';
-import Loading from '../Loading';
 
 type Props = {
   data: IGenericQueryRowData[],
@@ -48,7 +47,7 @@ const BarChart: React.FC<Props> = ({ data, chartXAxisKey, chartYAxisKey }) => {
       }}
 
       loading={isLoading}
-      loadingTemplate={<Loading />}
+      // loadingTemplate={<Loading />}
       xField={chartYAxisKey}
       yField= {chartXAxisKey}
       seriesField={chartYAxisKey}

@@ -1,0 +1,1 @@
+export const toOnlyDate = (d: string) => d.split('T')[0];

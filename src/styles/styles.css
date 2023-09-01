@@ -7,6 +7,7 @@
   width: 100%;
   background-color: rgb(var(--callout-rgb));
   min-height: 42em !important;
+  z-index: 0;
   height: 100%;
 }
 .loading-container .animation-box {
@@ -112,6 +113,7 @@
 
 aside {
   flex-basis: 18%;
+  z-index: 99 !important;
   background: rgb(var(--callout2-rgb));
   border-radius: 0.2rem;
 }
@@ -216,7 +218,7 @@ aside {
   width: 100%;
   margin: 0.5rem 0;
 }
-.database-selection span {
+.database-selection p {
   font-size: 14px;
   color: rgb(var(--primary));
 }
@@ -306,13 +308,21 @@ aside {
 .table-container .ant-pagination {
   padding: 0 1rem;
 }
+.table-container .ant-pagination a,
+.table-container .ant-pagination button {
+  color: rgb(var(--foreground-rgb)) !important;
+}
 .table-container .ant-pagination .ant-pagination-item-active {
   background-color: rgb(var(--primary));
+}
+.table-container .ant-pagination .ant-pagination-item-active a,
+.table-container .ant-pagination .ant-pagination-item-active button {
+  color: white !important;
 }
 .table-container .ant-pagination a,
 .table-container .ant-pagination button,
 .table-container .ant-pagination span {
-  color: rgb(var(--foreground-rgb)) !important;
+  color: rgb(var(white)) !important;
 }
 .table-container table {
   font-size: 14px;

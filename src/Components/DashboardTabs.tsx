@@ -3,8 +3,8 @@ import React from 'react';
 import { IGenericQueryRowData, useDatabases } from '../Context/DatabaseContext';
 import BarChart from './Charts/BarChart';
 import PeriodSelection from './PeriodSelection';
-import Printable from './PrintableTable';
 import Table from './Table';
+import TableToXLSXButton from './TableToXLSXButton';
 
 // import { Container } from './styles';
 
@@ -17,7 +17,10 @@ const DashboardTabs: React.FC = () => {
   } = useDatabases();
 
 
+
+
   return (
+
     <Tabs
       type='card'
       items={[
@@ -26,24 +29,21 @@ const DashboardTabs: React.FC = () => {
           key: 'table',
           children: (
             <div>
-                    
               { currentQuery?.isCompatibleWithPeriod && <PeriodSelection />}
-
+              
+              <TableToXLSXButton
+                data={queryData as IGenericQueryRowData[]}
+              />
               <div>
                 {queryData && queryData.length > 0 ? (
-                  <Printable
-                    trigger={() => <button>Imprimir</button>}
-                  >
-                    <Table
-                      isLoading={isLoading}
-                      data={queryData as IGenericQueryRowData[]}
-                    />
-                  </Printable>
+                  <Table
+                    isLoading={isLoading}
+                    data={queryData as IGenericQueryRowData[]}
+                  />
                 )
                   : (<p>Não existem dados para este período.</p>)
                 }
               </div>
-
             </div>
           )
         },
@@ -52,9 +52,9 @@ const DashboardTabs: React.FC = () => {
           key: 'graphic',
           children: (
             <>
-              <PeriodSelection />
-              
-              { currentQuery?.chartXAxisKey !== '' ? 
+              { currentQuery?.isCompatibleWithPeriod && <PeriodSelection />}
+      
+              { currentQuery?.chartXAxisKey !== '' ?
                 <><BarChart
                   data={queryData as IGenericQueryRowData[]}
                   chartXAxisKey={currentQuery?.chartXAxisKey as string}
@@ -64,12 +64,12 @@ const DashboardTabs: React.FC = () => {
                 : (<p>Esta consulta não possui gráfico.</p>)
               }
               {/* <LineChart
-                data={queryData as IGenericQueryRowData[]}
-                chartXAxisKey={currentQuery?.chartXAxisKey as string}
-                chartYAxisKey={currentQuery?.chartYAxisKey as string}
-              /> */}
+                  data={queryData as IGenericQueryRowData[]}
+                  chartXAxisKey={currentQuery?.chartXAxisKey as string}
+                  chartYAxisKey={currentQuery?.chartYAxisKey as string}
+                /> */}
             </>
-            
+      
           )
         }
       ]} />
