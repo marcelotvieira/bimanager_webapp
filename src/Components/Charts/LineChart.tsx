@@ -1,4 +1,4 @@
-import { Line } from '@ant-design/charts';
+// import { Line } from '@ant-design/charts';
 import React from 'react';
 import { IGenericQueryRowData, useDatabases } from '../../Context/DatabaseContext';
 
@@ -13,13 +13,13 @@ const LineChart: React.FC<Props> = ({ data, chartXAxisKey, chartYAxisKey }) => {
   const { isLoading } = useDatabases();
   return (
     <>
-      <Line
+      {/* <Line
         loading={isLoading}
         xField={chartYAxisKey}
         yField= {chartXAxisKey}
         seriesField={chartXAxisKey}
         data={data}
-      />
+      /> */}
     </>
   );
 };

@@ -54,11 +54,15 @@ const DashboardTabs: React.FC = () => {
             <>
               <PeriodSelection />
               
-              { currentQuery?.chartXAxisKey !== '' && <BarChart
-                data={queryData as IGenericQueryRowData[]}
-                chartXAxisKey={currentQuery?.chartXAxisKey as string}
-                chartYAxisKey={currentQuery?.chartYAxisKey as string}
-              />}
+              { currentQuery?.chartXAxisKey !== '' ? 
+                <><BarChart
+                  data={queryData as IGenericQueryRowData[]}
+                  chartXAxisKey={currentQuery?.chartXAxisKey as string}
+                  chartYAxisKey={currentQuery?.chartYAxisKey as string}
+                />
+                </>
+                : (<p>Esta consulta não possui gráfico.</p>)
+              }
               {/* <LineChart
                 data={queryData as IGenericQueryRowData[]}
                 chartXAxisKey={currentQuery?.chartXAxisKey as string}

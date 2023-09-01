@@ -5,7 +5,16 @@ import React from 'react';
 const Loading: React.FC = () => {
   return (
     <div className="loading-container">
-      <span></span>
+      <div className="animation-box">
+        <div className="flex justified-between">
+          <span></span>
+          <span></span>
+        </div>
+        <div className="flex justified-between">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   );
 };

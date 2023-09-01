@@ -1,6 +1,7 @@
 import { Bar } from '@ant-design/charts';
 import React from 'react';
-import { IGenericQueryRowData } from '../../Context/DatabaseContext';
+import { IGenericQueryRowData, useDatabases } from '../../Context/DatabaseContext';
+import Loading from '../Loading';
 
 type Props = {
   data: IGenericQueryRowData[],
@@ -8,45 +9,78 @@ type Props = {
   chartXAxisKey: string,
 }
 
-// const { isLoading } = useDatabases();
+
 
 const BarChart: React.FC<Props> = ({ data, chartXAxisKey, chartYAxisKey }) => {
 
-  console.log(chartXAxisKey);
-  console.log(chartYAxisKey);
+  const { isLoading } = useDatabases();
+
   return (
     
     <Bar
-
-      xField={chartXAxisKey}
-      yField= {chartYAxisKey}
-      seriesField={chartXAxisKey}
-      height={700}
-      yAxis={{
-        label: {
-          autoRotate: false,
+      label={{
+        formatter: (item) => (item[chartYAxisKey]
+          .toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          })),
+      }}
+      xAxis={{  
+        grid: {
+          line: {
+            style: {
+              lineWidth: 2,
+              opacity: 0.05,
+            }
+          },
         },
       }}
-      className='antd-bar-chart-container'
 
-      scrollbar={{
-        type: 'vertical',
-        style:{
-          thumbColor: 'rgb(29, 74, 151)',
-
+      yAxis={{
+        label:{
+          autoHide: true,
+          autoRotate: true,
+          autoEllipsis: true,
+          style: {
+            fontSize: 9,
+          }
         }
       }}
 
+      loading={isLoading}
+      loadingTemplate={<Loading />}
+      xField={chartYAxisKey}
+      yField= {chartXAxisKey}
+      seriesField={chartYAxisKey}
+      height={700}
+      className='antd-bar-chart-container'
+      // maxBarWidth={30}
+      // minBarWidth={24}
+      
+      scrollbar={{
+        type: 'vertical',
+        width: 20,
+        style:{
+          thumbColor: 'rgb(29, 74, 151)',
+          trackColor: 'rgba(10, 10, 10, 0.15)',
+        }
+      }}
 
-    
+      tooltip={{
+        formatter: (item) => ({
+          name: item[chartXAxisKey],
+          value: item[chartYAxisKey].toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          })
+        })
+      }}
+
       data={
-      //   data.sort((a, b) => {
-      //   if (a[chartYAxisKey] && b[chartYAxisKey]) {
-      //     return Number(a[chartYAxisKey]) - Number(b[chartYAxisKey]);
-      //   }
-      //   return 0;
-      // })
-        data
+        data.map((d) => ({
+          [chartYAxisKey]: Number(d[chartYAxisKey]),
+          [chartXAxisKey]: d[chartXAxisKey],
+        }))
       }
     />
   );
