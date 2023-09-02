@@ -100,7 +100,6 @@
 
 .ant-select-selector {
   border-radius: 0.2rem !important;
-  border: 1px solid rgb(27, 99, 207) !important;
   background-color: rgb(var(--callout-rgb)) !important;
   color: rgb(var(--foreground-rgb)) !important;
 }
@@ -173,9 +172,6 @@ i {
 @media (prefers-color-scheme: dark) {
   .ant-select-item-option-selected {
     background-color: rgb(29, 74, 151) !important;
-  }
-  .ant-select-selector {
-    border: 1px solid rgb(29, 74, 151) !important;
   }
   .ant-tabs-tab {
     border: 1px solid rgb(27, 99, 207) !important;

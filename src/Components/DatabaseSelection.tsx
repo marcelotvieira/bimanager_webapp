@@ -23,10 +23,7 @@ const DatabaseSelection: React.FC<Props> = ({
 
   useEffect(() => {
     getConnections(user.id, token)
-      .then(({ data }) => {
-        console.log(data.response);
-        setUserConnections(data);
-      })
+      .then(({ data }) =>  setUserConnections(data))
       .catch((err: Error) => console.log(err));
 
     setIsVisible(true);

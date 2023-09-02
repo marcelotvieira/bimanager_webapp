@@ -108,8 +108,7 @@ $copy: #484664;
 }
 
 .period-selection {
-  margin: 1rem 0;
-  padding: 1rem;
+  padding: 1rem 0;
   width: fit-content;
 
   h4 {
@@ -122,7 +121,7 @@ $copy: #484664;
     // border: none;
     border-radius: .2rem;
     background-color: rgb(var(--callout-rgb));
-    padding: .6rem;
+    // padding: .6rem;
 
     input {
       color: rgb(var(--foreground-rgb));

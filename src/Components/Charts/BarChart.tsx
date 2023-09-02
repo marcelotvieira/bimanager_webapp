@@ -24,12 +24,14 @@ const BarChart: React.FC<Props> = ({ data, chartXAxisKey, chartYAxisKey }) => {
             currency: 'BRL'
           })),
       }}
-      xAxis={{  
+      xAxis={{ 
+        maxTickCount: 8,
         grid: {
           line: {
             style: {
               lineWidth: 2,
-              opacity: 0.05,
+              opacity: 0.3,
+              stroke: 'rgba(120, 140, 235, 0.5)',
             }
           },
         },
@@ -47,15 +49,11 @@ const BarChart: React.FC<Props> = ({ data, chartXAxisKey, chartYAxisKey }) => {
       }}
 
       loading={isLoading}
-      // loadingTemplate={<Loading />}
       xField={chartYAxisKey}
       yField= {chartXAxisKey}
       seriesField={chartYAxisKey}
       height={700}
-      className='antd-bar-chart-container'
-      // maxBarWidth={30}
-      // minBarWidth={24}
-      
+      className='antd-bar-chart-container'      
       scrollbar={{
         type: 'vertical',
         width: 20,

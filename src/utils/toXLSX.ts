@@ -18,14 +18,17 @@ export const toXLSX = (
     workbook,
     `${fileName}_${period?.initialDate}_${period?.finalDate}.xlsx`);
 
+  const description = period ? 
+    `${fileName} | ${period?.initialDate} | ${period?.finalDate}` :
+    fileName;
+
   if (api) {
     openNotification({
       type: 'success',
       api,
       info: {
         message: 'Dados Exportados!',
-        description: `
-        ${fileName} | ${period?.initialDate} | ${period?.finalDate}`,
+        description: description,
         placement: 'bottomRight'
       }
     });

@@ -117,7 +117,7 @@ $white: rgb(250, 250, 250);
 
 .ant-select-selector {
   border-radius: .2rem !important;
-  border: 1px solid $primary !important;
+  // border: 1px solid $primary !important;
 
   background-color: rgb(var(--callout-rgb)) !important;
   color: rgb(var(--foreground-rgb)) !important;
@@ -209,10 +209,6 @@ i {
     background-color: $primary-dark !important;
   }
 
-  .ant-select-selector {
-    border: 1px solid $primary-dark !important;
-
-  }
 
   .ant-tabs-tab {
     border: 1px solid $primary !important;

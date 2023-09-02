@@ -33,7 +33,6 @@ const PeriodSelection: React.FC = () => {
         allowClear={false}
         locale={locale}
         showTime
-
         format="YYYY-MM-DD"
         onOk={onOk}
 
